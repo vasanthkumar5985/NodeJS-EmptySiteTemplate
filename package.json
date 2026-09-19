@@ -1,12 +1,27 @@
 {
-  "name": "application-name",
-  "version": "2.0.0",
+  "name": "sf-community-portal-test-agent",
+  "version": "1.0.0",
   "private": true,
+  "description": "Automation testing agent for Salesforce Experience Cloud / Community portals",
+  "main": "agent/cli.js",
   "scripts": {
-    "start": "node server"
-  },  
-"license": "Apache",
-"engines": {
-    "node": "~0.10.0 || ~4.2.0"
+    "start": "node server.js",
+    "mock:portal": "node mock-portal/server.js",
+    "agent": "node agent/cli.js",
+    "test": "node agent/cli.js run",
+    "test:headed": "node agent/cli.js run --headed",
+    "test:smoke": "node agent/cli.js run --suite smoke",
+    "test:critical": "node agent/cli.js run --suite critical",
+    "report": "node agent/cli.js report",
+    "postinstall": "npx playwright install chromium"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.5",
+    "playwright": "^1.48.0"
   }
 }
